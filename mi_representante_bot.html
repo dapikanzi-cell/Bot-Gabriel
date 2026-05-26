@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel Aravena Pardo — Representante Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#0D1B2A;--navy2:#162335;--blue:#1A4A7A;--blue-light:#2D7DD2;
+    --gold:#C9A84C;--gold-light:#E8C97A;--cream:#F5F0E8;
+    --text:#1A1A1A;--muted:#6B6560;--border:rgba(201,168,76,0.25);--white:#FFFFFF;
+  }
+  body{
+    font-family:'DM Sans',sans-serif;background:var(--navy);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+    background-image:radial-gradient(ellipse at 20% 50%,rgba(26,74,122,0.3) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 20%,rgba(201,168,76,0.08) 0%,transparent 50%);
+  }
+  .container{
+    width:100%;max-width:880px;display:grid;grid-template-columns:295px 1fr;
+    min-height:640px;border-radius:20px;overflow:hidden;
+    box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(201,168,76,0.2);
+  }
+  .profile-panel{
+    background:linear-gradient(160deg,#1A3A5C 0%,#0D1B2A 100%);
+    padding:32px 24px;display:flex;flex-direction:column;align-items:center;
+    border-right:1px solid var(--border);position:relative;overflow:hidden;
+  }
+  .profile-panel::before{
+    content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none;
+  }
+  .avatar-wrap{position:relative;margin-bottom:16px;}
+  .avatar-ring{
+    width:100px;height:100px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--blue-light) 100%);
+    padding:3px;display:flex;align-items:center;justify-content:center;
+  }
+  .avatar-inner{
+    width:100%;height:100%;border-radius:50%;background:var(--navy2);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .avatar-svg{width:72px;height:72px;}
+  .status-dot{
+    position:absolute;bottom:3px;right:3px;width:16px;height:16px;
+    border-radius:50%;background:#2ECC71;border:3px solid var(--navy2);
+    animation:pulse-dot 2.5s infinite;
+  }
+  @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(46,204,113,0.4);}50%{box-shadow:0 0 0 6px rgba(46,204,113,0);}}
+  .profile-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--cream);text-align:center;margin-bottom:2px;}
+  .profile-deg{font-size:11px;color:var(--gold-light);text-align:center;margin-bottom:3px;}
+  .profile-title{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.4px;color:var(--gold);text-align:center;margin-bottom:18px;}
+  .divider{width:100%;height:1px;background:var(--border);margin-bottom:16px;}
+  .stat-row{width:100%;display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+  .stat{display:flex;align-items:center;gap:10px;}
+  .stat-icon{
+    width:30px;height:30px;border-radius:7px;
+    background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .stat-icon svg{width:14px;height:14px;stroke:var(--gold);}
+  .stat-info{flex:1;}
+  .stat-val{font-size:12px;font-weight:600;color:var(--cream);line-height:1.2;}
+  .stat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;}
+  .section-label{width:100%;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);margin-bottom:7px;}
+  .tag-list{width:100%;display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+  .tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.7px;padding:3px 9px;border-radius:20px;border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);background:rgba(201,168,76,0.07);}
+  .tag.geo{border-color:rgba(45,125,210,0.4);color:#7FBCEE;background:rgba(45,125,210,0.1);}
+  .tag.edu{border-color:rgba(46,204,113,0.3);color:#7EE8A2;background:rgba(46,204,113,0.07);}
+  .bot-badge{
+    width:100%;padding:9px 12px;border-radius:10px;
+    background:rgba(45,125,210,0.15);border:1px solid rgba(45,125,210,0.3);
+    display:flex;align-items:center;gap:8px;margin-top:auto;
+  }
+  .bot-badge svg{width:14px;height:14px;stroke:var(--blue-light);flex-shrink:0;}
+  .bot-badge-text{font-size:10px;color:#7FBCEE;line-height:1.4;}
+  .chat-panel{background:var(--cream);display:flex;flex-direction:column;}
+  .chat-header{
+    padding:18px 22px;border-bottom:1px solid rgba(0,0,0,0.08);
+    background:var(--white);display:flex;align-items:center;justify-content:space-between;
+  }
+  .chat-header-title{font-size:13px;font-weight:600;color:var(--text);}
+  .chat-header-sub{font-size:11px;color:var(--muted);margin-top:1px;}
+  .live-badge{
+    display:flex;align-items:center;gap:5px;
+    font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;
+    color:#1A7A4A;background:#E8F7EF;padding:4px 10px;border-radius:20px;border:1px solid #A8DFC0;
+  }
+  .live-dot{width:6px;height:6px;border-radius:50%;background:#2ECC71;animation:pulse-dot 2s infinite;}
+  .messages{
+    flex:1;overflow-y:auto;padding:20px 18px;
+    display:flex;flex-direction:column;gap:14px;max-height:450px;scroll-behavior:smooth;
+  }
+  .messages::-webkit-scrollbar{width:4px;}
+  .messages::-webkit-scrollbar-track{background:transparent;}
+  .messages::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:2px;}
+  .msg{display:flex;gap:10px;animation:fadeUp 0.3s ease;}
+  .msg.user{flex-direction:row-reverse;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .msg-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;}
+  .msg-avatar.bot{background:var(--navy);border:1.5px solid var(--gold);}
+  .msg-avatar.bot svg{width:14px;height:14px;stroke:var(--gold);}
+  .msg-avatar.user{background:var(--blue);color:white;}
+  .bubble{max-width:80%;padding:11px 15px;border-radius:16px;font-size:13px;line-height:1.65;}
+  .bot .bubble{background:var(--white);color:var(--text);border:1px solid rgba(0,0,0,0.07);border-bottom-left-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
+  .user .bubble{background:var(--navy);color:var(--cream);border-bottom-right-radius:4px;}
+  .typing{display:flex;gap:4px;align-items:center;padding:12px 15px;}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bounce 1.2s infinite;}
+  .typing span:nth-child(2){animation-delay:0.2s;}
+  .typing span:nth-child(3){animation-delay:0.4s;}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}}
+  .quick-btns{padding:0 18px 10px;display:flex;flex-wrap:wrap;gap:6px;}
+  .quick-btn{
+    font-size:11px;font-weight:500;padding:5px 11px;border-radius:20px;
+    border:1px solid rgba(26,74,122,0.25);background:white;color:var(--blue);
+    cursor:pointer;transition:all 0.15s ease;font-family:'DM Sans',sans-serif;
+  }
+  .quick-btn:hover{background:var(--blue);color:white;border-color:var(--blue);}
+  .input-area{
+    padding:14px 18px;background:var(--white);border-top:1px solid rgba(0,0,0,0.08);
+    display:flex;gap:10px;align-items:flex-end;
+  }
+  .input-box{
+    flex:1;padding:9px 13px;border-radius:12px;border:1.5px solid rgba(0,0,0,0.12);
+    font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;
+    resize:none;min-height:40px;max-height:100px;transition:border-color 0.2s;
+  }
+  .input-box:focus{border-color:var(--blue-light);}
+  .input-box::placeholder{color:#AAA;}
+  .send-btn{
+    width:40px;height:40px;border-radius:12px;background:var(--navy);border:none;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s ease;flex-shrink:0;
+  }
+  .send-btn:hover{background:var(--blue);transform:scale(1.05);}
+  .send-btn:active{transform:scale(0.97);}
+  .send-btn svg{width:17px;height:17px;stroke:white;}
+  @media(max-width:640px){.container{grid-template-columns:1fr;}.profile-panel{display:none;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- LEFT PANEL -->
+  <div class="profile-panel">
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <svg class="avatar-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="40" cy="70" rx="28" ry="16" fill="#1A3A5C"/>
+            <path d="M24,62 Q30,52 36,49 L40,55 L44,49 Q50,52 56,62 Z" fill="#1A3A5C"/>
+            <path d="M36,49 L40,53 L44,49 L42,62 L40,63 L38,62 Z" fill="#F0F4F8"/>
+            <path d="M38,52 L42,52 L41,62 L40,63 L39,62 Z" fill="#C9A84C"/>
+            <rect x="35" y="40" width="10" height="12" rx="4" fill="#C4956A"/>
+            <ellipse cx="40" cy="28" rx="17" ry="18" fill="#D4A574"/>
+            <path d="M24,26 Q25,12 40,10 Q55,12 56,26 Q52,16 46,13 Q40,10 34,13 Q28,16 24,26Z" fill="#2C2C2A"/>
+            <ellipse cx="33" cy="27" rx="3" ry="2.5" fill="white"/>
+            <ellipse cx="47" cy="27" rx="3" ry="2.5" fill="white"/>
+            <circle cx="33" cy="27" r="1.8" fill="#2C2C2A"/>
+            <circle cx="47" cy="27" r="1.8" fill="#2C2C2A"/>
+            <path d="M34,36 Q40,40 46,36" stroke="#8B5A3A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="status-dot"></div>
+    </div>
+
+    <div class="profile-name">Gabriel Aravena Pardo</div>
+    <div class="profile-deg">Ing. Civil Mecánico · UTFSM</div>
+    <div class="profile-deg" style="font-size:10px;color:var(--muted);margin-top:1px;">Diplomado Gestión de Empresas · U. de Chile</div>
+    <div class="profile-title">Logística · Ferroviario · Medioambiente</div>
+
+    <div class="divider"></div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2z"/></svg></div>
+        <div class="stat-info">
+          <div class="stat-val">+20 años de experiencia</div>
+          <div class="stat-lbl">Gerencia &amp; Operaciones</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l4-8 4 4 3-6 4 8M3 21h18"/></svg></div>
+        <div class="stat-info">
+          <div class="stat-val">Transporte Ferroviario &amp; Carretera</div>
+          <div class="stat-lbl">Ferroviario &amp; Carretera</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+        <div class="stat-info">
+          <div class="stat-val">Gestión Ecológica de Residuos</div>
+          <div class="stat-lbl">Gte. Operaciones · 2011–presente</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Cargos objetivo</div>
+    <div class="tag-list">
+      <span class="tag">Gte. General</span>
+      <span class="tag">Gte. Operaciones</span>
+      <span class="tag">Director Ops.</span>
+      <span class="tag">Subgerente</span>
+    </div>
+
+    <div class="section-label">Preferencia geográfica</div>
+    <div class="tag-list">
+      <span class="tag geo">Región de Los Lagos</span>
+      <span class="tag geo">Sector Norte · Stgo</span>
+    </div>
+
+    <div class="section-label">Formación</div>
+    <div class="tag-list">
+      <span class="tag edu">Ing. Civil Mecánico · UTFSM</span>
+      <span class="tag edu">Diplomado en Gestión · U. de Chile</span>
+    </div>
+
+    <div class="bot-badge">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="3"/><path stroke-linecap="round" d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="14" r="2"/></svg>
+      <span class="bot-badge-text">Agente IA · responde en nombre de Gabriel</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: Chat Panel -->
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div>
+        <div class="chat-header-title">Representante de Gabriel Aravena Pardo</div>
+        <div class="chat-header-sub">Ing. Civil Mecánico · Gerente de Operaciones</div>
+      </div>
+      <div class="live-badge"><div class="live-dot"></div>En línea</div>
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="msg bot">
+        <div class="msg-avatar bot">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="3"/><path stroke-linecap="round" d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="14" r="2"/></svg>
+        </div>
+        <div class="bubble">
+          Hola, soy el representante digital de <strong>Gabriel Aravena Pardo</strong>, Ingeniero Civil Mecánico de la UTFSM, con Diplomado en Gestión de Empresas de la Universidad de Chile, y más de 20 años liderando operaciones en logística, medioambiente y el sector ferroviario. Con experiencia en transporte de carga ferroviario y por carretera. Actualmente es Gerente de Operaciones y busca un nuevo desafío como <strong>Gerente General, Gerente de Operaciones o Director de Operaciones</strong>, con preferencia en la <strong>Región de Los Lagos</strong> o el <strong>sector norte de Santiago</strong>. ¿En qué puedo ayudarte?
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-btns" id="quick-btns">
+      <button class="quick-btn" onclick="sendQuick('¿Cuáles son sus principales logros?')">🏆 Logros clave</button>
+      <button class="quick-btn" onclick="sendQuick('¿Qué hizo en Ferrocarril del Pacífico?')">🚂 Exp. ferroviaria</button>
+      <button class="quick-btn" onclick="sendQuick('¿Qué hace actualmente?')">🏭 Cargo actual</button>
+      <button class="quick-btn" onclick="sendQuick('¿Cuál es su formación académica?')">🎓 Formación</button>
+      <button class="quick-btn" onclick="sendQuick('¿Está disponible para entrevistas?')">📅 Disponibilidad</button>
+      <button class="quick-btn" onclick="sendQuick('¿Cuál es su pretensión de renta?')">💰 Renta</button>
+    </div>
+
+    <div class="input-area">
+      <textarea class="input-box" id="input" placeholder="Escribe tu pregunta como reclutador..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send()}"
+        oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="send-btn" onclick="send()">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `Eres el representante digital de GABRIEL ARAVENA PARDO. Hablas en su nombre con reclutadores y headhunters. Responde SIEMPRE en español, de forma profesional y concisa (máximo 5 oraciones). Usa los datos reales del CV.
+
+PERFIL COMPLETO Y VERIFICADO:
+Nombre: Juan Gabriel Aravena Pardo
+Título: Ingeniero Civil Mecánico, Universidad Técnica Federico Santa María (UTFSM)
+Postgrado: Diplomado en Gestión de Empresas (DGE), Universidad de Chile (2000–2001)
+Inglés: Nivel medio
+
+EXPERIENCIA (de más reciente a más antigua):
+
+1. GESTIÓN ECOLÓGICA DE RESIDUOS S.A. | 2011–presente | Gerente de Operaciones
+- Lideró construcción, implementación y operación de planta de transferencia de residuos sólidos no peligrosos: capacidad 20.000 ton/mes
+- Equipo multidisciplinario de 36 trabajadores a cargo
+- Responsable de reportes a organismos gubernamentales (SEREMI, SMA)
+- Gestión de KPIs operacionales y plan de mantención
+- Reporta directamente al Gerente General
+- Experiencia en ISO 9001, 14001, 45001 (Sistemas Integrados de Gestión)
+
+2. CAF S.A. (Construcciones y Auxiliar de Ferrocarriles) | 2009–2011 | Subgerente de Proyecto
+- Lideró proyecto de suministro ferroviario por USD 200 millones para Metro de Santiago
+- Responsable de importación, ensamblaje, pruebas en vía y entrega de 20 trenes (8 vagones c/u)
+- Reportó directamente al Gerente de Proyectos en España
+
+3. AXIS LOGÍSTICA CHILE S.A. | 2006–2008 | Gerente de Logística
+- Gestionó distribución nacional de insumos para McDonald's
+- Lideró equipo de 120 personas
+- Operó centro de distribución de 15.000 m2, 7.000 posiciones, 4.800 SKUs
+- LOGROS CONCRETOS: Redujo costos de distribución en 5%; amplió bodegas de 8.000 a 15.000 m2; implementó sistema WMS (JDE) y gestión de rutas Axiodis; abrió y operó centro de distribución en Antofagasta
+
+4. TRANSPORTE DE CARGA | Experiencia en sector ferroviario y transporte por carretera | Múltiples cargos ejecutivos:
+   a) Subgerente de Proyecto: Creó departamento tecnológico; mejoró llenado de parque de equipos en 10%; implementó GPS; optimizó canales de circulación de trenes
+   b) Subgerente de Control de Tráfico: Movilización de trenes en líneas no gestionadas por la oficina central; optimización de explotación de vías y tiempos de viaje
+   c) Subgerente de Operaciones: Planes operativos para zona centro y puertos; lideró equipo de 85 colaboradores; 5 locomotoras de ruta y 7 de patio
+   d) Jefe de Equipo Remolcado: Mantención de 3.500 vagones de carga; bases técnicas de licitación; actualización normativa ferroviaria
+
+PREFERENCIA GEOGRÁFICA: Región de Los Lagos (prioridad 1) y sector norte de Santiago — Colina, Lampa, Til Til, Pudahuel, Quilicura (prioridad 2). No está interesado en otras regiones ni en el centro o sur de Santiago.
+
+CARGOS OBJETIVO: Gerente General, Gerente de Operaciones, Director de Operaciones, Subgerente de Operaciones
+
+PRETENSIÓN DE RENTA: A convenir según el cargo y la empresa. Gabriel evalúa cada oportunidad en función de las responsabilidades, beneficios y proyección del rol. No entregar cifras específicas; invitar al reclutador a conversar directamente con él.
+
+DISPONIBILIDAD: A convenir (actualmente empleado)
+
+MOTIVACIÓN Y SELLO PERSONAL:
+- La operación en terreno y la formación de capital humano representan una gran satisfacción profesional y personal para Gabriel. Le motiva profundamente liderar equipos en campo, desarrollar personas y construir equipos de alto desempeño desde la base operacional.
+
+FORTALEZAS CLAVE A DESTACAR:
+- Perfil en transporte de carga único: amplia experiencia en sector ferroviario y transporte por carretera con 4 cargos de liderazgo progresivos
+- Experiencia en proyectos de infraestructura de gran escala (USD 200M)
+- Gestión de equipos grandes: desde 36 hasta 120 personas
+- Manejo de operaciones 24/7 en entornos regulados
+- Conocimiento en medioambiente, residuos y normativa ambiental chilena
+- Formación de ingeniería de elite (UTFSM, top 4 de su generación)
+- Software: Windows, Word, PowerPoint, Excel, AutoCAD, MS Project
+
+INSTRUCCIONES DE COMPORTAMIENTO:
+- Habla como representante: "Gabriel ha liderado...", "En su trayectoria en Ferrocarril del Pacífico..."
+- Siempre cita logros con cifras reales del CV
+- Si el reclutador quiere contacto directo, dile: "Puedes dejar tu email aquí y Gabriel se comunicará contigo personalmente en las próximas 24 horas"
+- Resalta la experiencia ferroviaria como diferenciador estratégico
+- No inventes datos que no estén en este perfil; si no tienes el dato, ofrece compartir el CV completo`;
+
+const messages = [];
+const container = document.getElementById('messages');
+
+async function send() {
+  const input = document.getElementById('input');
+  const text = input.value.trim();
+  if (!text) return;
+  document.getElementById('quick-btns').style.display = 'none';
+  addMsg('user', text);
+  messages.push({ role: 'user', content: text });
+  input.value = ''; input.style.height = 'auto';
+  const typingId = showTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: messages
+      })
+    });
+    const data = await res.json();
+    removeTyping(typingId);
+    const reply = data.content?.[0]?.text || 'Lo siento, hubo un error. Por favor intenta nuevamente.';
+    addMsg('bot', reply);
+    messages.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping(typingId);
+    addMsg('bot', 'Hubo un problema de conexión. Por favor intenta nuevamente.');
+  }
+}
+
+function sendQuick(text) { document.getElementById('input').value = text; send(); }
+
+function addMsg(role, text) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  const av = document.createElement('div');
+  av.className = `msg-avatar ${role}`;
+  if (role === 'bot') {
+    av.innerHTML = `<svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#C9A84C" style="width:14px;height:14px"><rect x="2" y="7" width="20" height="14" rx="3"/><path stroke-linecap="round" d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="14" r="2"/></svg>`;
+  } else { av.textContent = 'RH'; }
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.innerHTML = text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  div.appendChild(av); div.appendChild(bubble);
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+  const id = 'typing-' + Date.now();
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = id;
+  div.innerHTML = `<div class="msg-avatar bot"><svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#C9A84C" style="width:14px;height:14px"><rect x="2" y="7" width="20" height="14" rx="3"/><path stroke-linecap="round" d="M8 7V5a4 4 0 018 0v2"/><circle cx="12" cy="14" r="2"/></svg></div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  return id;
+}
+
+function removeTyping(id) { const el = document.getElementById(id); if (el) el.remove(); }
+</script>
+</body>
+</html>
